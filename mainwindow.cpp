@@ -13,3 +13,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_goToGameBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1); // move to page_2 (index 1) in stackedWidget
+}
+
