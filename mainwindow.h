@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
+#include <QDateTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,8 +19,11 @@ public:
 
 private slots:
     void on_goToGameBtn_clicked();
+    void on_startBtn_clicked();
+    void updateCountdown();
 
 private:
     Ui::MainWindow *ui;
+    uint playerScore{0};
 };
 #endif // MAINWINDOW_H
