@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cardBack.jpg</file>
+        <file>cardFront.jpg</file>
+    </qresource>
+</RCC>
