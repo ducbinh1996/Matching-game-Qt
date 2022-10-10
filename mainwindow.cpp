@@ -23,8 +23,8 @@ void MainWindow::on_goToGameBtn_clicked()
 
 void MainWindow::on_startBtn_clicked()
 {
-    playerScore++;
-    ui->scoreNumber->display((int)playerScore);
+    playerMove++;
+    ui->moveNumber->display((int)playerMove);
     if (!gameStarted)
     {
         connect(timer, SIGNAL(timeout()), this, SLOT(updateCountdown()));

@@ -24,7 +24,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    uint playerScore{0};
+    uint playerMove{0};
     bool gameStarted{false};
 };
 #endif // MAINWINDOW_H
