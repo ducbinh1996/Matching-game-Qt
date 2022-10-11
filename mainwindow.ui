@@ -6,34 +6,99 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
-    <height>743</height>
+    <width>1143</width>
+    <height>723</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="currentIndex">
          <number>0</number>
         </property>
         <widget class="QWidget" name="startUpPage">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="styleSheet">
+          <string notr="true">QWidget#startUpPage {
+	border-image: url(:/background0.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QPushButton" name="goToGameBtn">
-            <property name="text">
-             <string>Go to game</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="goToGameBtn">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+	background-color: rgb(255, 243, 183);
+	color: black; 
+    border-style: outset;
+    border-width: 2px;
+    border-color: black;
+}</string>
+              </property>
+              <property name="text">
+               <string>Go to game</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
         <widget class="QWidget" name="gamePage">
+         <property name="minimumSize">
+          <size>
+           <width>813</width>
+           <height>647</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -451,22 +516,7 @@ QCheckBox::indicator {
                </widget>
               </item>
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
-                <property name="spacing">
-                 <number>20</number>
-                </property>
-                <property name="sizeConstraint">
-                 <enum>QLayout::SetMinimumSize</enum>
-                </property>
-                <property name="leftMargin">
-                 <number>20</number>
-                </property>
-                <property name="rightMargin">
-                 <number>20</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
+               <layout class="QVBoxLayout" name="verticalLayout">
                 <item>
                  <spacer name="tmpVerticalSpacer_2">
                   <property name="orientation">
@@ -474,8 +524,8 @@ QCheckBox::indicator {
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
-                    <width>20</width>
-                    <height>40</height>
+                    <width>98</width>
+                    <height>17</height>
                    </size>
                   </property>
                  </spacer>
@@ -493,7 +543,7 @@ QCheckBox::indicator {
                 <item>
                  <widget class="QPushButton" name="startBtn">
                   <property name="text">
-                   <string>PushButton</string>
+                   <string>Start</string>
                   </property>
                  </widget>
                 </item>
@@ -523,6 +573,37 @@ QCheckBox::indicator {
                   </property>
                  </spacer>
                 </item>
+                <item>
+                 <widget class="QLabel" name="labelMeme">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>300</width>
+                    <height>450</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel#labelMeme {
+	background-image: url(:/willSmith.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
              </layout>
@@ -542,7 +623,7 @@ QCheckBox::indicator {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>819</width>
+     <width>1143</width>
      <height>25</height>
     </rect>
    </property>

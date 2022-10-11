@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>cardBack.jpg</file>
         <file>cardFront.jpg</file>
+        <file>background0.jpg</file>
+        <file>willSmith.png</file>
     </qresource>
 </RCC>
