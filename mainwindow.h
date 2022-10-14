@@ -22,6 +22,10 @@ private slots:
     void on_startBtn_clicked();
     void updateCountdown();
 
+    void on_pauseBtn_clicked();
+
+    void on_resumeBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     uint playerMove{0};

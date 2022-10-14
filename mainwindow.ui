@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_5">
+   <layout class="QVBoxLayout" name="verticalLayout_7">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -23,7 +23,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="startUpPage">
          <property name="styleSheet">
@@ -99,437 +99,515 @@
          <property name="styleSheet">
           <string notr="true"/>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <layout class="QGridLayout" name="gridLayout">
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="cardCheckBox">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
+           <widget class="QStackedWidget" name="stackedWidget_2">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="pausedGame">
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QLabel" name="pauseMessage">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>731</width>
+                    <height>150</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Impact</family>
+                    <pointsize>20</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;Oh, so you chose to pause the game so that you can remember the images positions, and then continue the game without the timer nunning? &lt;br/&gt;Nice try, but you cannot do that since I have moved you into another widget.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="pauseImage">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>731</width>
+                    <height>381</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel#pauseImage {
+	image: url(:/pauseWidget..jpg);
 }
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="cardCheckBox_12">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="cardCheckBox_9">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QCheckBox" name="cardCheckBox_7">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="cardCheckBox_11">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QCheckBox" name="cardCheckBox_3">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QCheckBox" name="cardCheckBox_2">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QCheckBox" name="cardCheckBox_4">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QCheckBox" name="cardCheckBox_8">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QCheckBox" name="cardCheckBox_6">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="cardCheckBox_10">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="cardCheckBox_5">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="cardCheckBox_13">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QCheckBox" name="cardCheckBox_14">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="cardCheckBox_15">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="cardCheckBox_16">
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-    spacing: 5px;
-}
-QCheckBox::indicator {
-     width: 150px;
-     height: 150px;
- }
-
-  QCheckBox::indicator:checked
-  {
-    image: url(:cardFront.jpg);
-  }
-  QCheckBox::indicator:unchecked
-  {
-    image: url(:cardBack.jpg);
-  }</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
+</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
+            </widget>
+            <widget class="QWidget" name="inGame">
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
+                 <widget class="QCheckBox" name="cardCheckBox">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QCheckBox" name="cardCheckBox_12">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QCheckBox" name="cardCheckBox_9">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QCheckBox" name="cardCheckBox_7">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QCheckBox" name="cardCheckBox_11">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QCheckBox" name="cardCheckBox_3">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QCheckBox" name="cardCheckBox_2">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QCheckBox" name="cardCheckBox_4">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QCheckBox" name="cardCheckBox_8">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QCheckBox" name="cardCheckBox_6">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QCheckBox" name="cardCheckBox_10">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QCheckBox" name="cardCheckBox_5">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QCheckBox" name="cardCheckBox_13">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QCheckBox" name="cardCheckBox_14">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QCheckBox" name="cardCheckBox_15">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QCheckBox" name="cardCheckBox_16">
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing: 5px;
+}
+QCheckBox::indicator {
+     width: 150px;
+     height: 150px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:cardFront.jpg);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:cardBack.jpg);
+  }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout">
+             <layout class="QVBoxLayout" name="verticalLayout">
               <item>
-               <widget class="Line" name="line">
+               <spacer name="tmpVerticalSpacer_2">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
                 </property>
-               </widget>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>98</width>
+                  <height>17</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout">
-                <item>
-                 <spacer name="tmpVerticalSpacer_2">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>98</width>
-                    <height>17</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <item>
                  <widget class="QLabel" name="label">
                   <property name="text">
@@ -540,71 +618,89 @@ QCheckBox::indicator {
                 <item>
                  <widget class="QLCDNumber" name="moveNumber"/>
                 </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QPushButton" name="startBtn">
+                <property name="text">
+                 <string>Start</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout">
                 <item>
-                 <widget class="QPushButton" name="startBtn">
+                 <widget class="QPushButton" name="pauseBtn">
                   <property name="text">
-                   <string>Start</string>
+                   <string>Pause</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="timerDisplay">
+                 <widget class="QPushButton" name="resumeBtn">
                   <property name="text">
-                   <string>20:00</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>false</bool>
+                   <string>Resume</string>
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <spacer name="tmpVerticalSpacer">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelMeme">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>300</width>
-                    <height>450</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLabel#labelMeme {
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="timerDisplay">
+                <property name="text">
+                 <string>Enter timer</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="tmpVerticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="labelMeme">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>450</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel#labelMeme {
 	background-image: url(:/willSmith.png);
 	background-position: bottom right;
 	background-repeat: no-repeat;
 }
 
 </string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="wordWrap">
+                 <bool>false</bool>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
