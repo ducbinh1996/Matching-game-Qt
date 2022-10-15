@@ -31,10 +31,16 @@ private slots:
 
     void mapping_card_value();
 
+    void change_card_availability(bool);
+
+    void compare_card(uint);
+
 private:
     Ui::MainWindow *ui;
     uint playerMove{0};
     bool gameStarted{false};
-    int cardArr =  0x0000;
+    uint cardArr =  0x0000;
+    int numberOfMove = 0;
+    int numberOfOpenCard = 0;
 };
 #endif // MAINWINDOW_H

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QWidget>
 
 QTimer *timer = new QTimer();
 QTime playTime(0,0,59);
@@ -23,12 +24,14 @@ MainWindow::~MainWindow()
 void MainWindow::on_goToGameBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);                                  // move to page_2 (index 1) in stackedWidget
+    change_card_availability(false);
 }
 
 void MainWindow::on_startBtn_clicked()
 {
     ui->moveNumber->display((int)playerMove);
     gameStarted = true;
+    change_card_availability(true);
 }
 
 void MainWindow::updateCountdown()
@@ -58,6 +61,9 @@ void MainWindow::on_resumeBtn_clicked()
 
 void MainWindow::mapping_card_value()
 {
+    int oldCardArr = cardArr;
+
+    //update card Arr
     if (ui->cardCheckBox->checkState()){
         cardArr |= 1UL << 0;
     }
@@ -169,5 +175,47 @@ void MainWindow::mapping_card_value()
     else {
         cardArr &= ~(1UL << 15);
     }
-//    if (cardArr.count)
+
+    //handle move count
+    oldCardArr ^= cardArr;
+    for(; oldCardArr>0;)
+    {
+        if(oldCardArr%2)
+        {
+            numberOfMove++;
+            numberOfOpenCard++;
+        }
+        oldCardArr = oldCardArr >> 1;
+        if(numberOfOpenCard >= 2)
+        {
+            numberOfOpenCard = 0;
+            compare_card(cardArr);
+        }
+    }
+    ui->moveNumber->display(numberOfMove);
+};
+
+void MainWindow::change_card_availability(bool state)
+{
+    ui->cardCheckBox->setCheckable(state);
+    ui->cardCheckBox_2->setCheckable(state);
+    ui->cardCheckBox_3->setCheckable(state);
+    ui->cardCheckBox_4->setCheckable(state);
+    ui->cardCheckBox_5->setCheckable(state);
+    ui->cardCheckBox_6->setCheckable(state);
+    ui->cardCheckBox_7->setCheckable(state);
+    ui->cardCheckBox_8->setCheckable(state);
+    ui->cardCheckBox_9->setCheckable(state);
+    ui->cardCheckBox_10->setCheckable(state);
+    ui->cardCheckBox_11->setCheckable(state);
+    ui->cardCheckBox_12->setCheckable(state);
+    ui->cardCheckBox_13->setCheckable(state);
+    ui->cardCheckBox_14->setCheckable(state);
+    ui->cardCheckBox_15->setCheckable(state);
+    ui->cardCheckBox_16->setCheckable(state);
+};
+
+void MainWindow::compare_card(uint arr)
+{
+    //todo: compare and disable card if match
 };
