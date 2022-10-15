@@ -28,7 +28,7 @@
         <widget class="QWidget" name="startUpPage">
          <property name="styleSheet">
           <string notr="true">QWidget#startUpPage {
-	border-image: url(:/background0.jpg);
+	border-image: url(:/background_2.png);
 	background-position: center;
 	background-repeat: no-repeat;
 }
@@ -109,7 +109,7 @@
              </size>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="pausedGame">
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -699,6 +699,13 @@ QCheckBox::indicator {
                 </property>
                 <property name="wordWrap">
                  <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="outputLabel">
+                <property name="text">
+                 <string>TextLabel</string>
                 </property>
                </widget>
               </item>
