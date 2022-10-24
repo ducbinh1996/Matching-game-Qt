@@ -33,14 +33,18 @@ private slots:
 
     void change_card_availability(bool);
 
-    void compare_card(uint);
+    bool is_matched_cards(uint card1, uint card2);
+
+    void diable_cards(uint card);
+
+    void uncheck_cards(uint card1, uint card2);
 
 private:
     Ui::MainWindow *ui;
     uint playerMove{0};
     bool gameStarted{false};
     uint cardArr =  0x0000;
-    int numberOfMove = 0;
+    int numberOfMove = 0;       // should we change the type to uint too?
     int numberOfOpenCard = 0;
 };
 #endif // MAINWINDOW_H

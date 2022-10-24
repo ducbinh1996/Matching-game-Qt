@@ -182,17 +182,17 @@ void MainWindow::mapping_card_value()
     {
         if(oldCardArr%2)
         {
-            numberOfMove++;
+            numberOfMove++;             // need testing for the moveCount value
             numberOfOpenCard++;
         }
         oldCardArr = oldCardArr >> 1;
         if(numberOfOpenCard >= 2)
         {
             numberOfOpenCard = 0;
-            compare_card(cardArr);
+//            is_matched_cards(card1, card2); // to be added
         }
     }
-    ui->moveNumber->display(numberOfMove);
+    ui->moveNumber->display(numberOfMove/2); // temporary fix to display the correct value of moveCount
 };
 
 void MainWindow::change_card_availability(bool state)
@@ -215,7 +215,17 @@ void MainWindow::change_card_availability(bool state)
     ui->cardCheckBox_16->setCheckable(state);
 };
 
-void MainWindow::compare_card(uint arr)
+bool MainWindow::is_matched_cards(uint card1, uint card2)
 {
-    //todo: compare and disable card if match
+    //todo: compare card if match
+};
+
+void MainWindow::diable_cards(uint card)
+{
+    //todo: disable card
+};
+
+void MainWindow::uncheck_cards(uint card1, uint card2)
+{
+    //todo: uncheck the two cards that have just been opened by the player
 };
