@@ -39,7 +39,13 @@ void MainWindow::updateCountdown()
     if (gameStarted)
     {
         playTime = playTime.addSecs(-1);
+        uint oldCardArr = cardArr;
         mapping_card_value();
+        if (oldCardArr != cardArr)
+        {
+            numberOfMove++;
+            ui->moveNumber->display(numberOfMove/2); // fix for displaying numberOfMove
+        }
     }
     QString timerText = playTime.toString("mm:ss");
     ui->timerDisplay->setText(timerText);
@@ -178,21 +184,19 @@ void MainWindow::mapping_card_value()
 
     //handle move count
     oldCardArr ^= cardArr;
-    for(; oldCardArr>0;)
+    while(oldCardArr>0)
     {
         if(oldCardArr%2)
         {
-            numberOfMove++;             // need testing for the moveCount value
             numberOfOpenCard++;
         }
         oldCardArr = oldCardArr >> 1;
         if(numberOfOpenCard >= 2)
         {
             numberOfOpenCard = 0;
-//            is_matched_cards(card1, card2); // to be added
+            uncheck_cards(1,1);
         }
     }
-    ui->moveNumber->display(numberOfMove/2); // temporary fix to display the correct value of moveCount
 };
 
 void MainWindow::change_card_availability(bool state)
@@ -228,4 +232,26 @@ void MainWindow::diable_cards(uint card)
 void MainWindow::uncheck_cards(uint card1, uint card2)
 {
     //todo: uncheck the two cards that have just been opened by the player
+    ui->cardCheckBox->setChecked(false); // temporary uncheck all the cards
+    ui->cardCheckBox_2->setChecked(false);
+    ui->cardCheckBox_3->setChecked(false);
+    ui->cardCheckBox_4->setChecked(false);
+    ui->cardCheckBox_5->setChecked(false);
+    ui->cardCheckBox_6->setChecked(false);
+    ui->cardCheckBox_7->setChecked(false);
+    ui->cardCheckBox_8->setChecked(false);
+    ui->cardCheckBox_9->setChecked(false);
+    ui->cardCheckBox_10->setChecked(false);
+    ui->cardCheckBox_11->setChecked(false);
+    ui->cardCheckBox_12->setChecked(false);
+    ui->cardCheckBox_13->setChecked(false);
+    ui->cardCheckBox_14->setChecked(false);
+    ui->cardCheckBox_15->setChecked(false);
+    ui->cardCheckBox_16->setChecked(false);
 };
+
+uint MainWindow::find_bit_index(uint card)
+{
+    // todo: find bit index to be used as input for uncheck_cards()
+    // return index;
+}

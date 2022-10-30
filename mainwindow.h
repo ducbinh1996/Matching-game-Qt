@@ -39,6 +39,8 @@ private slots:
 
     void uncheck_cards(uint card1, uint card2);
 
+    uint find_bit_index(uint card);
+
 private:
     Ui::MainWindow *ui;
     uint playerMove{0};
