@@ -39,13 +39,7 @@ void MainWindow::updateCountdown()
     if (gameStarted)
     {
         playTime = playTime.addSecs(-1);
-        uint oldCardArr = cardArr;
         mapping_card_value();
-        if (oldCardArr != cardArr)
-        {
-            numberOfMove++;
-            ui->moveNumber->display(numberOfMove/2); // fix for displaying numberOfMove
-        }
     }
     QString timerText = playTime.toString("mm:ss");
     ui->timerDisplay->setText(timerText);
@@ -67,7 +61,7 @@ void MainWindow::on_resumeBtn_clicked()
 
 void MainWindow::mapping_card_value()
 {
-    int oldCardArr = cardArr;
+    uint oldCardArr = cardArr;
 
     //update card Arr
     if (ui->cardCheckBox->checkState()){
@@ -183,18 +177,36 @@ void MainWindow::mapping_card_value()
     }
 
     //handle move count
-    oldCardArr ^= cardArr;
-    while(oldCardArr>0)
+    // note: click 2 cards too fast can lead to misdisplaying the numberOfMove. Need to be checked later
+
+    if (oldCardArr < cardArr) // Open 2 cards means cardArr always > oldCardArr, which is a move and we can unchecked all the cards
     {
-        if(oldCardArr%2)
+        qDebug("---Open a card which hasn't been opend---");
+        qDebug("oldCardArr %d", oldCardArr);
+        qDebug("cardArr %d", cardArr);
+        numberOfMove++;
+        qDebug("numberOfMove %d", numberOfMove);
+        ui->moveNumber->display(numberOfMove/2);
+        if(numberOfMove%2 == 0)
         {
-            numberOfOpenCard++;
+            // to do: add a sleep function, maybe create a new one, or (learn to) use QThread
+            uncheck_cards(1,1); // (1,1) is just random value to call the uncheck_cards() function
+            qDebug("---uncheck_cards: DONE!---");
         }
-        oldCardArr = oldCardArr >> 1;
-        if(numberOfOpenCard >= 2)
+    }
+    else if (oldCardArr > cardArr && numberOfMove%2 == 1) // Close the opened card means cardArr < oldCardArr only when numberOfMove is odd number, which is a move and we can unchecked all the cards
+    {
+        qDebug("---Close a card which has been already opened---");
+        qDebug("oldCardArr ->- %d", oldCardArr);
+        qDebug("cardArr %d", cardArr);
+        numberOfMove++;
+        qDebug("numberOfMove %d", numberOfMove);
+        ui->moveNumber->display(numberOfMove/2);
+        if(numberOfMove%2 == 0)
         {
-            numberOfOpenCard = 0;
-            uncheck_cards(1,1);
+            // to do: add a sleep function, maybe create a new one, or (learn to) use QThread
+            uncheck_cards(1,1); // (1,1) is just random value to call the uncheck_cards() function
+            qDebug("---uncheck_cards: DONE!---");
         }
     }
 };
