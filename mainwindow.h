@@ -48,5 +48,10 @@ private:
     uint cardArr =  0x0000;
     int numberOfMove = 0;       // should we change the type to uint too?
     int numberOfOpenCard = 0;
+    uint oldCardArr = 0x0000;
+    uint indexBitCardArr = 0;
+    uint indexOpenCard = 0;
+    uint indexCard1 = 0;
+    uint indexCard2 = 0;
 };
 #endif // MAINWINDOW_H
