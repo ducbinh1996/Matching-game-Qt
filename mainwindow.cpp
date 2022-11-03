@@ -61,10 +61,10 @@ void MainWindow::on_resumeBtn_clicked()
 
 void MainWindow::mapping_card_value()
 {
-    uint oldCardArr = cardArr;
+    oldCardArr = cardArr;
 
     //update card Arr
-    if (ui->cardCheckBox->checkState()){
+    if (ui->cardCheckBox_1->checkState()){
         cardArr |= 1UL << 0;
     }
     else {
@@ -184,15 +184,30 @@ void MainWindow::mapping_card_value()
         qDebug("---Open a card which hasn't been opend---");
         qDebug("oldCardArr %d", oldCardArr);
         qDebug("cardArr %d", cardArr);
+
         numberOfMove++;
+        indexBitCardArr = oldCardArr ^= cardArr;
+        indexOpenCard = log(indexBitCardArr)/log(2) + 1; // logarit with base 2 can be calculated from natural logarit of 2
+
         qDebug("numberOfMove %d", numberOfMove);
-        ui->moveNumber->display(numberOfMove/2);
+        qDebug("indexBitCardArr %d", indexBitCardArr);
+        qDebug("indexOpenCard %d", indexOpenCard);
         if(numberOfMove%2 == 0)
         {
+            ui->moveNumber->display(numberOfMove/2);
+            indexCard2 = indexOpenCard;
             // to do: add a sleep function, maybe create a new one, or (learn to) use QThread
-            uncheck_cards(1,1); // (1,1) is just random value to call the uncheck_cards() function
+            uncheck_cards(indexCard1,indexCard2);
             qDebug("---uncheck_cards: DONE!---");
         }
+        else
+        {
+            indexCard1 = indexOpenCard;
+        }
+
+        qDebug("Card 1: %d", indexCard1);
+        qDebug("Card 2: %d", indexCard2);
+        qDebug("---Finish a move---");
     }
     else if (oldCardArr > cardArr && numberOfMove%2 == 1) // Close the opened card means cardArr < oldCardArr only when numberOfMove is odd number, which is a move and we can unchecked all the cards
     {
@@ -208,12 +223,13 @@ void MainWindow::mapping_card_value()
             uncheck_cards(1,1); // (1,1) is just random value to call the uncheck_cards() function
             qDebug("---uncheck_cards: DONE!---");
         }
+        qDebug("---Finish a move---");
     }
 };
 
 void MainWindow::change_card_availability(bool state)
 {
-    ui->cardCheckBox->setCheckable(state);
+    ui->cardCheckBox_1->setCheckable(state);
     ui->cardCheckBox_2->setCheckable(state);
     ui->cardCheckBox_3->setCheckable(state);
     ui->cardCheckBox_4->setCheckable(state);
@@ -243,23 +259,87 @@ void MainWindow::diable_cards(uint card)
 
 void MainWindow::uncheck_cards(uint card1, uint card2)
 {
-    //todo: uncheck the two cards that have just been opened by the player
-    ui->cardCheckBox->setChecked(false); // temporary uncheck all the cards
-    ui->cardCheckBox_2->setChecked(false);
-    ui->cardCheckBox_3->setChecked(false);
-    ui->cardCheckBox_4->setChecked(false);
-    ui->cardCheckBox_5->setChecked(false);
-    ui->cardCheckBox_6->setChecked(false);
-    ui->cardCheckBox_7->setChecked(false);
-    ui->cardCheckBox_8->setChecked(false);
-    ui->cardCheckBox_9->setChecked(false);
-    ui->cardCheckBox_10->setChecked(false);
-    ui->cardCheckBox_11->setChecked(false);
-    ui->cardCheckBox_12->setChecked(false);
-    ui->cardCheckBox_13->setChecked(false);
-    ui->cardCheckBox_14->setChecked(false);
-    ui->cardCheckBox_15->setChecked(false);
-    ui->cardCheckBox_16->setChecked(false);
+    // todo: find a better way to convert string to qobject (qcheckbox)
+    if (card1 == 1 || card2 == 1)
+    {
+        ui->cardCheckBox_1->setChecked(false);
+    }
+
+    if (card1 == 2 || card2 == 2)
+    {
+        ui->cardCheckBox_2->setChecked(false);
+    }
+
+    if (card1 == 3 || card2 == 3)
+    {
+        ui->cardCheckBox_3->setChecked(false);
+    }
+
+    if (card1 == 4 || card2 == 4)
+    {
+        ui->cardCheckBox_4->setChecked(false);
+    }
+
+    if (card1 == 5 || card2 == 5)
+    {
+        ui->cardCheckBox_5->setChecked(false);
+    }
+
+    if (card1 == 6 || card2 == 6)
+    {
+        ui->cardCheckBox_6->setChecked(false);
+    }
+
+    if (card1 == 7 || card2 == 7)
+    {
+        ui->cardCheckBox_7->setChecked(false);
+    }
+
+    if (card1 == 8 || card2 == 8)
+    {
+        ui->cardCheckBox_8->setChecked(false);
+    }
+
+    if (card1 == 9 || card2 == 9)
+    {
+        ui->cardCheckBox_9->setChecked(false);
+    }
+
+    if (card1 == 10 || card2 == 10)
+    {
+        ui->cardCheckBox_10->setChecked(false);
+    }
+
+    if (card1 == 11 || card2 == 11)
+    {
+        ui->cardCheckBox_11->setChecked(false);
+    }
+
+    if (card1 == 12 || card2 == 12)
+    {
+        ui->cardCheckBox_12->setChecked(false);
+    }
+
+    if (card1 == 13 || card2 == 13)
+    {
+        ui->cardCheckBox_13->setChecked(false);
+    }
+
+    if (card1 == 14 || card2 == 14)
+    {
+        ui->cardCheckBox_14->setChecked(false);
+    }
+
+    if (card1 == 15 || card2 == 15)
+    {
+        ui->cardCheckBox_15->setChecked(false);
+    }
+
+    if (card1 == 16 || card2 == 16)
+    {
+        ui->cardCheckBox_16->setChecked(false);
+    }
+
 };
 
 uint MainWindow::find_bit_index(uint card)
