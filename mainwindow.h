@@ -5,6 +5,8 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QBitArray>
+#include <cstdlib>
+#include <iostream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -40,6 +42,8 @@ private slots:
     void uncheck_cards(uint card1, uint card2);
 
     uint find_bit_index(uint card);
+
+    void add_random_images();
 
 private:
     Ui::MainWindow *ui;

@@ -30,6 +30,7 @@ void MainWindow::on_goToGameBtn_clicked()
 void MainWindow::on_startBtn_clicked()
 {
     ui->moveNumber->display((int)playerMove);
+    add_random_images();
     gameStarted = true;
     change_card_availability(true);
 }
@@ -346,4 +347,22 @@ uint MainWindow::find_bit_index(uint card)
 {
     // todo: find bit index to be used as input for uncheck_cards()
     // return index;
+}
+
+void MainWindow::add_random_images()
+{
+    // todo: randomly add 8 images to 16 checkboxes
+    QString defaultStyleSheet = "QCheckBox {spacing: 5px;}"
+                                "QCheckBox::indicator {width: 150px; height: 150px;}"
+                                "QCheckBox::indicator:unchecked {image: url(:cardBack.jpg);}";
+
+    std::srand(7);
+    int image_index = 1;
+    qDebug("image_index %d", image_index);
+
+    QString appendStyleSheet = "QCheckBox::indicator:checked {image: url(:card_" + QString::number(image_index) + ".jpg);}";
+
+    ui->cardCheckBox_1->setStyleSheet(defaultStyleSheet + appendStyleSheet);
+    ui->cardCheckBox_2->setStyleSheet(defaultStyleSheet + appendStyleSheet);
+//    ui->cardCheckBox_1->setPixmap(pix);
 }
