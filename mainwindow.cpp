@@ -33,6 +33,8 @@ void MainWindow::on_startBtn_clicked()
     add_random_images();
     gameStarted = true;
     change_card_availability(true);
+
+    is_matched_cards(1,1); // just to print out styleSheet of cardCheckBox_1
 }
 
 void MainWindow::updateCountdown()
@@ -188,7 +190,7 @@ void MainWindow::mapping_card_value()
 
         numberOfMove++;
         indexBitCardArr = oldCardArr ^= cardArr;
-        indexOpenCard = log(indexBitCardArr)/log(2) + 1; // logarit with base 2 can be calculated from natural logarit of 2
+        indexOpenCard = find_bit_index(indexBitCardArr);
 
         qDebug("numberOfMove %d", numberOfMove);
         qDebug("indexBitCardArr %d", indexBitCardArr);
@@ -251,6 +253,8 @@ void MainWindow::change_card_availability(bool state)
 bool MainWindow::is_matched_cards(uint card1, uint card2)
 {
     //todo: compare card if match
+
+    qDebug() << "styleSheet of cardCheckBox_1: " << ui->cardCheckBox_1->styleSheet(); // this is what we will compare to check whether 2 cards is matched or not
 };
 
 void MainWindow::diable_cards(uint card)
@@ -345,24 +349,66 @@ void MainWindow::uncheck_cards(uint card1, uint card2)
 
 uint MainWindow::find_bit_index(uint card)
 {
-    // todo: find bit index to be used as input for uncheck_cards()
-    // return index;
+    uint index = log(card)/log(2) + 1; // logarit with base 2 can be calculated from natural logarit of 2
+    return index;
 }
 
 void MainWindow::add_random_images()
 {
     // todo: randomly add 8 images to 16 checkboxes
+    // the idea should be: 1, Create an Qstring array of 16 items, goes from card_1.jpg, card_1.jpg, card_2.jpg, card_2.jpg,... to card_8.jpg
+    //                     2, Shuffle the array
+    //                     3, Add each array item to the styleSheet
+
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     QString defaultStyleSheet = "QCheckBox {spacing: 5px;}"
                                 "QCheckBox::indicator {width: 150px; height: 150px;}"
                                 "QCheckBox::indicator:unchecked {image: url(:cardBack.jpg);}";
 
-    std::srand(7);
-    int image_index = 1;
-    qDebug("image_index %d", image_index);
+    // step 1
 
-    QString appendStyleSheet = "QCheckBox::indicator:checked {image: url(:card_" + QString::number(image_index) + ".jpg);}";
+    for (int i = 0; i < 8; i++)
+    {
+        appendStyleSheet[2*i]   = "QCheckBox::indicator:checked {image: url(:card_" + QString::number(i+1) + ".jpg);}";
+        appendStyleSheet[2*i+1] = "QCheckBox::indicator:checked {image: url(:card_" + QString::number(i+1) + ".jpg);}";
+    }
 
-    ui->cardCheckBox_1->setStyleSheet(defaultStyleSheet + appendStyleSheet);
-    ui->cardCheckBox_2->setStyleSheet(defaultStyleSheet + appendStyleSheet);
-//    ui->cardCheckBox_1->setPixmap(pix);
+    qDebug("---styleSheet before shuffle---");
+    for (int i = 0; i < 16; i++)
+    {
+       qDebug() << "index: " << i << appendStyleSheet[i];
+    }
+
+    // Step 2
+
+    shuffle(appendStyleSheet.begin(), appendStyleSheet.end(), std::default_random_engine(seed));
+
+    qDebug("---styleSheet after shuffle---");
+    for (int i = 0; i < 16; i++)
+    {
+       qDebug() << "index: " << i << appendStyleSheet[i];
+    }
+
+    // Step 3 (need to find a quicker way to do this)
+
+    ui->cardCheckBox_1->setStyleSheet(defaultStyleSheet + appendStyleSheet[0]);
+    ui->cardCheckBox_2->setStyleSheet(defaultStyleSheet + appendStyleSheet[1]);
+    ui->cardCheckBox_3->setStyleSheet(defaultStyleSheet + appendStyleSheet[2]);
+    ui->cardCheckBox_4->setStyleSheet(defaultStyleSheet + appendStyleSheet[3]);
+
+    ui->cardCheckBox_5->setStyleSheet(defaultStyleSheet + appendStyleSheet[4]);
+    ui->cardCheckBox_6->setStyleSheet(defaultStyleSheet + appendStyleSheet[5]);
+    ui->cardCheckBox_7->setStyleSheet(defaultStyleSheet + appendStyleSheet[6]);
+    ui->cardCheckBox_8->setStyleSheet(defaultStyleSheet + appendStyleSheet[7]);
+
+    ui->cardCheckBox_9->setStyleSheet(defaultStyleSheet + appendStyleSheet[8]);
+    ui->cardCheckBox_10->setStyleSheet(defaultStyleSheet + appendStyleSheet[9]);
+    ui->cardCheckBox_11->setStyleSheet(defaultStyleSheet + appendStyleSheet[10]);
+    ui->cardCheckBox_12->setStyleSheet(defaultStyleSheet + appendStyleSheet[11]);
+
+    ui->cardCheckBox_13->setStyleSheet(defaultStyleSheet + appendStyleSheet[12]);
+    ui->cardCheckBox_14->setStyleSheet(defaultStyleSheet + appendStyleSheet[13]);
+    ui->cardCheckBox_15->setStyleSheet(defaultStyleSheet + appendStyleSheet[14]);
+    ui->cardCheckBox_16->setStyleSheet(defaultStyleSheet + appendStyleSheet[15]);
 }
+

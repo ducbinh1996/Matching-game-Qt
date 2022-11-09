@@ -7,6 +7,10 @@
 #include <QBitArray>
 #include <cstdlib>
 #include <iostream>
+#include <random>
+#include <chrono>
+#include <algorithm>
+#include <array>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -45,6 +49,7 @@ private slots:
 
     void add_random_images();
 
+
 private:
     Ui::MainWindow *ui;
     uint playerMove{0};
@@ -57,5 +62,6 @@ private:
     uint indexOpenCard = 0;
     uint indexCard1 = 0;
     uint indexCard2 = 0;
+    std::array<QString, 16> appendStyleSheet;
 };
 #endif // MAINWINDOW_H
