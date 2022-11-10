@@ -177,7 +177,7 @@
               <item>
                <layout class="QGridLayout" name="gridLayout">
                 <item row="0" column="0">
-                 <widget class="QCheckBox" name="cardCheckBox">
+                 <widget class="QCheckBox" name="cardCheckBox_1">
                   <property name="styleSheet">
                    <string notr="true">QCheckBox {
     spacing: 5px;

@@ -5,6 +5,12 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QBitArray>
+#include <cstdlib>
+#include <iostream>
+#include <random>
+#include <chrono>
+#include <algorithm>
+#include <array>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,10 +37,31 @@ private slots:
 
     void mapping_card_value();
 
+    void change_card_availability(bool);
+
+    bool is_matched_cards(uint card1, uint card2);
+
+    void diable_cards(uint card);
+
+    void uncheck_cards(uint card1, uint card2);
+
+    uint find_bit_index(uint card);
+
+    void add_random_images();
+
+
 private:
     Ui::MainWindow *ui;
     uint playerMove{0};
     bool gameStarted{false};
-    int cardArr =  0x0000;
+    uint cardArr =  0x0000;
+    int numberOfMove = 0;       // should we change the type to uint too?
+    int numberOfOpenCard = 0;
+    uint oldCardArr = 0x0000;
+    uint indexBitCardArr = 0;
+    uint indexOpenCard = 0;
+    uint indexCard1 = 0;
+    uint indexCard2 = 0;
+    std::array<QString, 16> appendStyleSheet;
 };
 #endif // MAINWINDOW_H
