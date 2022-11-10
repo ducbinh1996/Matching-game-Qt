@@ -11,6 +11,7 @@
 #include <chrono>
 #include <algorithm>
 #include <array>
+#include <QCheckBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -49,6 +50,7 @@ private slots:
 
     void add_random_images();
 
+    void get_checkbox_ID(uint card);
 
 private:
     Ui::MainWindow *ui;
@@ -63,5 +65,6 @@ private:
     uint indexCard1 = 0;
     uint indexCard2 = 0;
     std::array<QString, 16> appendStyleSheet;
+    QCheckBox *checkbox = new QCheckBox("", this);
 };
 #endif // MAINWINDOW_H

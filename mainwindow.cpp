@@ -67,116 +67,16 @@ void MainWindow::mapping_card_value()
     oldCardArr = cardArr;
 
     //update card Arr
-    if (ui->cardCheckBox_1->checkState()){
-        cardArr |= 1UL << 0;
-    }
-    else {
-        cardArr &= ~(1UL << 0);
-    }
 
-    if (ui->cardCheckBox_2->checkState()){
-        cardArr |= 1UL << 1;
-    }
-    else {
-        cardArr &= ~(1UL << 1);
-    }
-
-    if (ui->cardCheckBox_3->checkState()){
-        cardArr |= 1UL << 2;
-    }
-    else {
-        cardArr &= ~(1UL << 2);
-    }
-
-    if (ui->cardCheckBox_4->checkState()){
-        cardArr |= 1UL << 3;
-    }
-    else {
-        cardArr &= ~(1UL << 3);
-    }
-
-    if (ui->cardCheckBox_5->checkState()){
-        cardArr |= 1UL << 4;
-    }
-    else {
-        cardArr &= ~(1UL << 4);
-    }
-
-    if (ui->cardCheckBox_6->checkState()){
-        cardArr |= 1UL << 5;
-    }
-    else {
-        cardArr &= ~(1UL << 5);
-    }
-
-    if (ui->cardCheckBox_7->checkState()){
-        cardArr |= 1UL << 6;
-    }
-    else {
-        cardArr &= ~(1UL << 6);
-    }
-
-    if (ui->cardCheckBox_8->checkState()){
-        cardArr |= 1UL << 7;
-    }
-    else {
-        cardArr &= ~(1UL << 7);
-    }
-
-    if (ui->cardCheckBox_9->checkState()){
-        cardArr |= 1UL << 8;
-    }
-    else {
-        cardArr &= ~(1UL << 8);
-    }
-
-    if (ui->cardCheckBox_10->checkState()){
-        cardArr |= 1UL << 9;
-    }
-    else {
-        cardArr &= ~(1UL << 9);
-    }
-
-    if (ui->cardCheckBox_11->checkState()){
-        cardArr |= 1UL << 10;
-    }
-    else {
-        cardArr &= ~(1UL << 10);
-    }
-
-    if (ui->cardCheckBox_12->checkState()){
-        cardArr |= 1UL << 11;
-    }
-    else {
-        cardArr &= ~(1UL << 11);
-    }
-
-    if (ui->cardCheckBox_13->checkState()){
-        cardArr |= 1UL << 12;
-    }
-    else {
-        cardArr &= ~(1UL << 12);
-    }
-
-    if (ui->cardCheckBox_14->checkState()){
-        cardArr |= 1UL << 13;
-    }
-    else {
-        cardArr &= ~(1UL << 13);
-    }
-
-    if (ui->cardCheckBox_15->checkState()){
-        cardArr |= 1UL << 14;
-    }
-    else {
-        cardArr &= ~(1UL << 14);
-    }
-
-    if (ui->cardCheckBox_16->checkState()){
-        cardArr |= 1UL << 15;
-    }
-    else {
-        cardArr &= ~(1UL << 15);
+    for (uint i = 0; i < 16; i++)
+    {
+       get_checkbox_ID(i+1);
+       if (checkbox->checkState()){
+           cardArr |= 1UL << i;         // if checkbox ID (i+1) is true then bit number (i) of cardArr is setted
+       }
+       else {
+           cardArr &= ~(1UL << i);      // if checkbox ID (i+1) is false then bit number (i) of cardArr is unsetted
+       }
     }
 
     //handle move count
@@ -232,22 +132,11 @@ void MainWindow::mapping_card_value()
 
 void MainWindow::change_card_availability(bool state)
 {
-    ui->cardCheckBox_1->setCheckable(state);
-    ui->cardCheckBox_2->setCheckable(state);
-    ui->cardCheckBox_3->setCheckable(state);
-    ui->cardCheckBox_4->setCheckable(state);
-    ui->cardCheckBox_5->setCheckable(state);
-    ui->cardCheckBox_6->setCheckable(state);
-    ui->cardCheckBox_7->setCheckable(state);
-    ui->cardCheckBox_8->setCheckable(state);
-    ui->cardCheckBox_9->setCheckable(state);
-    ui->cardCheckBox_10->setCheckable(state);
-    ui->cardCheckBox_11->setCheckable(state);
-    ui->cardCheckBox_12->setCheckable(state);
-    ui->cardCheckBox_13->setCheckable(state);
-    ui->cardCheckBox_14->setCheckable(state);
-    ui->cardCheckBox_15->setCheckable(state);
-    ui->cardCheckBox_16->setCheckable(state);
+    for (uint i = 0; i < 16; i++)
+    {
+        get_checkbox_ID(i+1);
+        checkbox->setCheckable(state);
+    }
 };
 
 bool MainWindow::is_matched_cards(uint card1, uint card2)
@@ -264,87 +153,14 @@ void MainWindow::diable_cards(uint card)
 
 void MainWindow::uncheck_cards(uint card1, uint card2)
 {
-    // todo: find a better way to convert string to qobject (qcheckbox)
-    if (card1 == 1 || card2 == 1)
+    for (uint i = 0; i < 16; i++)
     {
-        ui->cardCheckBox_1->setChecked(false);
+       if (card1 == i + 1 || card2 == i + 1)
+       {
+           get_checkbox_ID(i+1);
+           checkbox->setChecked(false);
+       }
     }
-
-    if (card1 == 2 || card2 == 2)
-    {
-        ui->cardCheckBox_2->setChecked(false);
-    }
-
-    if (card1 == 3 || card2 == 3)
-    {
-        ui->cardCheckBox_3->setChecked(false);
-    }
-
-    if (card1 == 4 || card2 == 4)
-    {
-        ui->cardCheckBox_4->setChecked(false);
-    }
-
-    if (card1 == 5 || card2 == 5)
-    {
-        ui->cardCheckBox_5->setChecked(false);
-    }
-
-    if (card1 == 6 || card2 == 6)
-    {
-        ui->cardCheckBox_6->setChecked(false);
-    }
-
-    if (card1 == 7 || card2 == 7)
-    {
-        ui->cardCheckBox_7->setChecked(false);
-    }
-
-    if (card1 == 8 || card2 == 8)
-    {
-        ui->cardCheckBox_8->setChecked(false);
-    }
-
-    if (card1 == 9 || card2 == 9)
-    {
-        ui->cardCheckBox_9->setChecked(false);
-    }
-
-    if (card1 == 10 || card2 == 10)
-    {
-        ui->cardCheckBox_10->setChecked(false);
-    }
-
-    if (card1 == 11 || card2 == 11)
-    {
-        ui->cardCheckBox_11->setChecked(false);
-    }
-
-    if (card1 == 12 || card2 == 12)
-    {
-        ui->cardCheckBox_12->setChecked(false);
-    }
-
-    if (card1 == 13 || card2 == 13)
-    {
-        ui->cardCheckBox_13->setChecked(false);
-    }
-
-    if (card1 == 14 || card2 == 14)
-    {
-        ui->cardCheckBox_14->setChecked(false);
-    }
-
-    if (card1 == 15 || card2 == 15)
-    {
-        ui->cardCheckBox_15->setChecked(false);
-    }
-
-    if (card1 == 16 || card2 == 16)
-    {
-        ui->cardCheckBox_16->setChecked(false);
-    }
-
 };
 
 uint MainWindow::find_bit_index(uint card)
@@ -389,26 +205,82 @@ void MainWindow::add_random_images()
        qDebug() << "index: " << i << appendStyleSheet[i];
     }
 
-    // Step 3 (need to find a quicker way to do this)
+    // Step 3 (need to find a quicker way to do this -> DONE!)
 
-    ui->cardCheckBox_1->setStyleSheet(defaultStyleSheet + appendStyleSheet[0]);
-    ui->cardCheckBox_2->setStyleSheet(defaultStyleSheet + appendStyleSheet[1]);
-    ui->cardCheckBox_3->setStyleSheet(defaultStyleSheet + appendStyleSheet[2]);
-    ui->cardCheckBox_4->setStyleSheet(defaultStyleSheet + appendStyleSheet[3]);
+    for (int i = 0; i < 16; i++)
+    {
+       get_checkbox_ID(i+1);
+       checkbox->setStyleSheet(defaultStyleSheet + appendStyleSheet[i]);
+    }
+}
 
-    ui->cardCheckBox_5->setStyleSheet(defaultStyleSheet + appendStyleSheet[4]);
-    ui->cardCheckBox_6->setStyleSheet(defaultStyleSheet + appendStyleSheet[5]);
-    ui->cardCheckBox_7->setStyleSheet(defaultStyleSheet + appendStyleSheet[6]);
-    ui->cardCheckBox_8->setStyleSheet(defaultStyleSheet + appendStyleSheet[7]);
+void MainWindow::get_checkbox_ID(uint card)
+{
+    switch(card)
+    {
+        case 1:
+            checkbox = ui->cardCheckBox_1;
+        break;
 
-    ui->cardCheckBox_9->setStyleSheet(defaultStyleSheet + appendStyleSheet[8]);
-    ui->cardCheckBox_10->setStyleSheet(defaultStyleSheet + appendStyleSheet[9]);
-    ui->cardCheckBox_11->setStyleSheet(defaultStyleSheet + appendStyleSheet[10]);
-    ui->cardCheckBox_12->setStyleSheet(defaultStyleSheet + appendStyleSheet[11]);
+        case 2:
+            checkbox = ui->cardCheckBox_2;
+        break;
 
-    ui->cardCheckBox_13->setStyleSheet(defaultStyleSheet + appendStyleSheet[12]);
-    ui->cardCheckBox_14->setStyleSheet(defaultStyleSheet + appendStyleSheet[13]);
-    ui->cardCheckBox_15->setStyleSheet(defaultStyleSheet + appendStyleSheet[14]);
-    ui->cardCheckBox_16->setStyleSheet(defaultStyleSheet + appendStyleSheet[15]);
+        case 3:
+            checkbox = ui->cardCheckBox_3;
+        break;
+
+        case 4:
+            checkbox = ui->cardCheckBox_4;
+        break;
+
+        case 5:
+            checkbox = ui->cardCheckBox_5;
+        break;
+
+        case 6:
+            checkbox = ui->cardCheckBox_6;
+        break;
+
+        case 7:
+            checkbox = ui->cardCheckBox_7;
+        break;
+
+        case 8:
+            checkbox = ui->cardCheckBox_8;
+        break;
+
+        case 9:
+            checkbox = ui->cardCheckBox_9;
+        break;
+
+        case 10:
+            checkbox = ui->cardCheckBox_10;
+        break;
+
+        case 11:
+            checkbox = ui->cardCheckBox_11;
+        break;
+
+        case 12:
+            checkbox = ui->cardCheckBox_12;
+        break;
+
+        case 13:
+            checkbox = ui->cardCheckBox_13;
+        break;
+
+        case 14:
+            checkbox = ui->cardCheckBox_14;
+        break;
+
+        case 15:
+            checkbox = ui->cardCheckBox_15;
+        break;
+
+        case 16:
+            checkbox = ui->cardCheckBox_16;
+        break;
+    }
 }
 
