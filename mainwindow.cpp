@@ -99,14 +99,15 @@ void MainWindow::mapping_card_value()
             indexCard2 = indexOpenCard;
             if (is_matched_cards(indexCard1, indexCard2))
             {
+                disable_cards(indexCard1, indexCard2);
                 qDebug("---IT'S A MATCH!!!---");
             }
             else
             {
+                uncheck_cards(indexCard1,indexCard2);
                 qDebug("---NOT A MATCH!!!---");
             }
             // to do: add a sleep function, maybe create a new one, or (learn to) use QThread
-            uncheck_cards(indexCard1,indexCard2);
             qDebug("---uncheck_cards: DONE!---");
         }
         else
@@ -156,9 +157,16 @@ bool MainWindow::is_matched_cards(uint card1, uint card2)
     }
 };
 
-void MainWindow::diable_cards(uint card)
+void MainWindow::disable_cards(uint card1, uint card2)
 {
     //todo: disable card
+    get_checkbox_ID(card1);
+    checkbox->setChecked(true);
+    checkbox->setEnabled(false);
+
+    get_checkbox_ID(card2);
+    checkbox->setChecked(true);
+    checkbox->setEnabled(false);
 };
 
 void MainWindow::uncheck_cards(uint card1, uint card2)
