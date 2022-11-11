@@ -52,6 +52,8 @@ private slots:
 
     void get_checkbox_ID(uint card);
 
+    void reset_index();
+
 private:
     Ui::MainWindow *ui;
     uint playerMove{0};

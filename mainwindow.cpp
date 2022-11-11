@@ -33,8 +33,6 @@ void MainWindow::on_startBtn_clicked()
     add_random_images();
     gameStarted = true;
     change_card_availability(true);
-
-    is_matched_cards(1,1); // just to print out styleSheet of cardCheckBox_1
 }
 
 void MainWindow::updateCountdown()
@@ -99,6 +97,14 @@ void MainWindow::mapping_card_value()
         {
             ui->moveNumber->display(numberOfMove/2);
             indexCard2 = indexOpenCard;
+            if (is_matched_cards(indexCard1, indexCard2))
+            {
+                qDebug("---IT'S A MATCH!!!---");
+            }
+            else
+            {
+                qDebug("---NOT A MATCH!!!---");
+            }
             // to do: add a sleep function, maybe create a new one, or (learn to) use QThread
             uncheck_cards(indexCard1,indexCard2);
             qDebug("---uncheck_cards: DONE!---");
@@ -120,12 +126,12 @@ void MainWindow::mapping_card_value()
         numberOfMove++;
         qDebug("numberOfMove %d", numberOfMove);
         ui->moveNumber->display(numberOfMove/2);
-        if(numberOfMove%2 == 0)
-        {
-            // to do: add a sleep function, maybe create a new one, or (learn to) use QThread
-            uncheck_cards(1,1); // (1,1) is just random value to call the uncheck_cards() function
-            qDebug("---uncheck_cards: DONE!---");
-        }
+//        if(numberOfMove%2 == 0)
+//        {
+//            // to do: add a sleep function, maybe create a new one, or (learn to) use QThread
+//            uncheck_cards(1,1); // (1,1) is just random value to call the uncheck_cards() function
+//            qDebug("---uncheck_cards: DONE!---");
+//        }
         qDebug("---Finish a move---");
     }
 };
@@ -142,8 +148,18 @@ void MainWindow::change_card_availability(bool state)
 bool MainWindow::is_matched_cards(uint card1, uint card2)
 {
     //todo: compare card if match
+    get_checkbox_ID(card1);
+    QString compareStyleSheet = checkbox->styleSheet();
 
-    qDebug() << "styleSheet of cardCheckBox_1: " << ui->cardCheckBox_1->styleSheet(); // this is what we will compare to check whether 2 cards is matched or not
+    get_checkbox_ID(card2);
+    if (compareStyleSheet == checkbox->styleSheet())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 };
 
 void MainWindow::diable_cards(uint card)
@@ -161,6 +177,8 @@ void MainWindow::uncheck_cards(uint card1, uint card2)
            checkbox->setChecked(false);
        }
     }
+
+    reset_index();
 };
 
 uint MainWindow::find_bit_index(uint card)
@@ -282,5 +300,12 @@ void MainWindow::get_checkbox_ID(uint card)
             checkbox = ui->cardCheckBox_16;
         break;
     }
+}
+
+void MainWindow::reset_index()
+{
+    indexCard1 = 0;
+    indexCard2 = 0;
+    qDebug("---RESET INDEXES: DONE!---");
 }
 
