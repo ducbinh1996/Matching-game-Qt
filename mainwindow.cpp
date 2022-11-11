@@ -126,12 +126,6 @@ void MainWindow::mapping_card_value()
         numberOfMove++;
         qDebug("numberOfMove %d", numberOfMove);
         ui->moveNumber->display(numberOfMove/2);
-//        if(numberOfMove%2 == 0)
-//        {
-//            // to do: add a sleep function, maybe create a new one, or (learn to) use QThread
-//            uncheck_cards(1,1); // (1,1) is just random value to call the uncheck_cards() function
-//            qDebug("---uncheck_cards: DONE!---");
-//        }
         qDebug("---Finish a move---");
     }
 };
