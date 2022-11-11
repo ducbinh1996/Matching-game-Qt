@@ -42,7 +42,7 @@ private slots:
 
     bool is_matched_cards(uint card1, uint card2);
 
-    void diable_cards(uint card);
+    void disable_cards(uint card1, uint card2);
 
     void uncheck_cards(uint card1, uint card2);
 
