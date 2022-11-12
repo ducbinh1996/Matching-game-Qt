@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <array>
 #include <QCheckBox>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -54,6 +55,10 @@ private slots:
 
     void reset_index();
 
+    bool game_ended();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     uint playerMove{0};
@@ -68,5 +73,7 @@ private:
     uint indexCard2 = 0;
     std::array<QString, 16> appendStyleSheet;
     QCheckBox *checkbox = new QCheckBox("", this);
+    QMessageBox msgBox;
+    bool debug{false};
 };
 #endif // MAINWINDOW_H
