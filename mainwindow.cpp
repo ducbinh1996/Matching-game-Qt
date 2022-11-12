@@ -3,7 +3,7 @@
 #include <QWidget>
 
 QTimer *timer = new QTimer();
-QTime playTime(0,0,59);
+QTime playTime(0,1,59);
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,6 +42,16 @@ void MainWindow::updateCountdown()
         playTime = playTime.addSecs(-1);
         mapping_card_value();
     }
+
+    if(game_ended() || debug) // open all the cards, or debug is true (just to reproduce winning the game)
+    {
+        msgBox.setIconPixmap(QPixmap(":win.jpg")); // to do: print the move count, the remain time,...
+        msgBox.exec();
+        cardArr = 0;          // reset the value so it doesn't keep openning the msgBox
+        debug = false;
+        gameStarted = false;
+    }
+
     QString timerText = playTime.toString("mm:ss");
     ui->timerDisplay->setText(timerText);
     ui->outputLabel->setText(QString::number(cardArr));
@@ -309,5 +319,23 @@ void MainWindow::reset_index()
     indexCard1 = 0;
     indexCard2 = 0;
     qDebug("---RESET INDEXES: DONE!---");
+}
+
+bool MainWindow::game_ended()
+{
+    if (cardArr == 0xFFFF)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    debug = true; // to reproduce when we win the game
 }
 
