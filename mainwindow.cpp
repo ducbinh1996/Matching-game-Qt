@@ -40,6 +40,7 @@ void MainWindow::updateCountdown()
     if (gameStarted)
     {
         playTime = playTime.addSecs(-1);
+//        mousePressEvent(
         mapping_card_value();
     }
 
@@ -338,4 +339,14 @@ void MainWindow::on_pushButton_clicked()
 {
     debug = true; // to reproduce when we win the game
 }
+
+//void MainWindow::mousePressEvent(QMouseEvent *event)
+//{
+//    if (event->button()==Qt::LeftButton)
+//    {
+////        updateCountdown();
+////        mapping_card_value();
+//        qDebug() << "left button is pressed";
+//    }
+//}
 

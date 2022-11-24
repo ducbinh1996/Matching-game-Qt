@@ -13,6 +13,7 @@
 #include <array>
 #include <QCheckBox>
 #include <QMessageBox>
+#include <QMouseEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -58,6 +59,8 @@ private slots:
     bool game_ended();
 
     void on_pushButton_clicked();
+
+//    void mousePressEvent(QMouseEvent *event);
 
 private:
     Ui::MainWindow *ui;
