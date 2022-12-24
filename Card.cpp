@@ -1,4 +1,6 @@
 #include "card.h"
+#include <chrono>
+#include <thread>
 
 void Card::initialize(Ui::MainWindow *ui_ptr)
 {
@@ -46,14 +48,20 @@ bool Card::is_matched_cards(uint card1, uint card2)
     //compare card if match
     if (checkbox_map[card1]->styleSheet() == checkbox_map[card2]->styleSheet())
     {
+        total_pair++;
         return true;
     }
     return false;
 }
 
-void Card::card_handler(uint cardId, bool status)
+bool Card::card_handler(uint cardId, bool status)
 {
-    qDebug("card_handler");
+    if(game_started == false)
+    {
+        return false;
+    }
+    player_move++;
+    ui->moveNumber->display(player_move);
     if(status == true)
     {
         num_open_cards++;
@@ -62,15 +70,20 @@ void Card::card_handler(uint cardId, bool status)
             if(is_matched_cards(pre_open_card, cardId))
             {
                 disable_cards(pre_open_card, cardId);
+                if(total_pair == 8)
+                {
+                    return true;
+                }
             }
             else
             {
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
                 checkbox_map[pre_open_card] ->setChecked(false);
                 checkbox_map[cardId] ->setChecked(false);
             }
             pre_open_card = 0;
             num_open_cards = 0;
-            return;
+            return false;
         }
         pre_open_card = cardId;
     }
@@ -79,6 +92,7 @@ void Card::card_handler(uint cardId, bool status)
         num_open_cards--;
         pre_open_card = 0;
     }
+    return false;
 }
 
 void Card::add_random_images()
@@ -123,4 +137,9 @@ void Card::add_random_images()
     {
        checkbox_map[i] ->setStyleSheet(defaultStyleSheet + appendStyleSheet[i-1]);
     }
+}
+
+void Card::set_started_status(bool status)
+{
+    game_started = status;
 }

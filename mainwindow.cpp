@@ -3,7 +3,7 @@
 #include <QWidget>
 
 QTimer *timer = new QTimer();
-QTime playTime(0,1,59);
+QTime playTime(0,2,00);
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -34,40 +34,36 @@ void MainWindow::on_startBtn_clicked()
 {
     if(gameStarted==false)
     {
-        ui->moveNumber->display((int)playerMove);
+        ui->moveNumber->display(0);
         card->add_random_images();
         gameStarted = true;
         card->change_card_availability(true);
         ui->startBtn->setVisible(false);
     }
-
+    card->set_started_status(true);
 }
 
 void MainWindow::updateCountdown()
 {
+    if (playTime == QTime(0,0,0))
+    {
+        player_win = false;
+        game_ended_handler();
+    }
     if (gameStarted)
     {
         playTime = playTime.addSecs(-1);
     }
 
-    if(game_ended() || debug) // open all the cards, or debug is true (just to reproduce winning the game)
-    {
-        msgBox.setIconPixmap(QPixmap(":win.jpg")); // to do: print the move count, the remain time,...
-        msgBox.exec();
-        cardArr = 0;          // reset the value so it doesn't keep openning the msgBox
-        debug = false;
-        gameStarted = false;
-    }
-
     QString timerText = playTime.toString("mm:ss");
     ui->timerDisplay->setText(timerText);
-    ui->outputLabel->setText(QString::number(cardArr));
 }
 
 void MainWindow::on_pauseBtn_clicked()
 {
     gameStarted = false;
     ui->stackedWidget_2->setCurrentIndex(0);
+    card->set_started_status(false);
 }
 
 
@@ -75,115 +71,148 @@ void MainWindow::on_resumeBtn_clicked()
 {
     gameStarted = true;
     ui->stackedWidget_2->setCurrentIndex(1);
+    card->set_started_status(true);
 }
 
-uint MainWindow::find_bit_index(uint card)
+void MainWindow::game_ended_handler()
 {
-    uint index = log(card)/log(2) + 1; // logarit with base 2 can be calculated from natural logarit of 2
-    return index;
-}
-
-void MainWindow::reset_index()
-{
-    indexCard1 = 0;
-    indexCard2 = 0;
-    qDebug("---RESET INDEXES: DONE!---");
-}
-
-bool MainWindow::game_ended()
-{
-    if (cardArr == 0xFFFF)
+    if(player_win)
     {
-        return true;
+        msgBox.setIconPixmap(QPixmap(":win.jpg")); // to do: print the move count, the remain time,...
+        msgBox.exec();
     }
     else
     {
-        return false;
+        msgBox.setIconPixmap(QPixmap(":lose.jpg")); // to do: print the move count, the remain time,...
+        msgBox.exec();
     }
-}
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    debug = true; // to reproduce when we win the game
+    timer->stop();
 }
 
 void MainWindow::on_cardCheckBox_1_clicked(bool checked)
 {
-    card->card_handler(1, checked);
+    if(card->card_handler(1, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_2_clicked(bool checked)
 {
-    card->card_handler(2, checked);
+    if(card->card_handler(2, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_3_clicked(bool checked)
 {
-    card->card_handler(3, checked);
+    if(card->card_handler(3, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_4_clicked(bool checked)
 {
-    card->card_handler(4, checked);
+    if(card->card_handler(4, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_5_clicked(bool checked)
 {
-    card->card_handler(5, checked);
+    if(card->card_handler(5, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_6_clicked(bool checked)
 {
-    card->card_handler(6, checked);
+    if(card->card_handler(6, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_7_clicked(bool checked)
 {
-    card->card_handler(7, checked);
+    if(card->card_handler(7, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_8_clicked(bool checked)
 {
-    card->card_handler(8, checked);
+    if(card->card_handler(8, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_9_clicked(bool checked)
 {
-    card->card_handler(9, checked);
+    if(card->card_handler(9, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_10_clicked(bool checked)
 {
-    card->card_handler(10, checked);
+    if(card->card_handler(10, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_11_clicked(bool checked)
 {
-    card->card_handler(11, checked);
+    if(card->card_handler(11, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_12_clicked(bool checked)
 {
-    card->card_handler(12, checked);
+    if(card->card_handler(12, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_13_clicked(bool checked)
 {
-    card->card_handler(13, checked);
+    if(card->card_handler(13, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_14_clicked(bool checked)
 {
-    card->card_handler(14, checked);
+    if(card->card_handler(14, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_15_clicked(bool checked)
 {
-    card->card_handler(15, checked);
+    if(card->card_handler(15, checked))
+    {
+        game_ended_handler();
+    }
 }
 
 void MainWindow::on_cardCheckBox_16_clicked(bool checked)
 {
-    card->card_handler(16, checked);
+    if(card->card_handler(16, checked))
+    {
+        game_ended_handler();
+    }
 }
