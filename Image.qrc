@@ -15,5 +15,6 @@
         <file>card_7.jpg</file>
         <file>card_8.jpg</file>
         <file>win.jpg</file>
+        <file>lose.jpg</file>
     </qresource>
 </RCC>
