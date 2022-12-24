@@ -13,6 +13,7 @@
 #include <array>
 #include <QCheckBox>
 #include <QMessageBox>
+#include "card.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,27 +38,44 @@ private slots:
 
     void on_resumeBtn_clicked();
 
-    void mapping_card_value();
+//    void mapping_card_value();
 
-    void change_card_availability(bool);
+//    void change_card_availability(bool);
 
-    bool is_matched_cards(uint card1, uint card2);
+//    bool is_matched_cards(uint card1, uint card2);
 
-    void disable_cards(uint card1, uint card2);
+//    void disable_cards(uint card1, uint card2);
 
-    void uncheck_cards(uint card1, uint card2);
+//    void uncheck_cards(uint card1, uint card2);
 
     uint find_bit_index(uint card);
 
-    void add_random_images();
+//    void add_random_images();
 
-    void get_checkbox_ID(uint card);
+//    void get_checkbox_ID(uint card);
 
     void reset_index();
 
     bool game_ended();
 
     void on_pushButton_clicked();
+
+    void on_cardCheckBox_1_clicked(bool checked);
+    void on_cardCheckBox_2_clicked(bool checked);
+    void on_cardCheckBox_3_clicked(bool checked);
+    void on_cardCheckBox_4_clicked(bool checked);
+    void on_cardCheckBox_5_clicked(bool checked);
+    void on_cardCheckBox_6_clicked(bool checked);
+    void on_cardCheckBox_7_clicked(bool checked);
+    void on_cardCheckBox_8_clicked(bool checked);
+    void on_cardCheckBox_9_clicked(bool checked);
+    void on_cardCheckBox_10_clicked(bool checked);
+    void on_cardCheckBox_11_clicked(bool checked);
+    void on_cardCheckBox_12_clicked(bool checked);
+    void on_cardCheckBox_13_clicked(bool checked);
+    void on_cardCheckBox_14_clicked(bool checked);
+    void on_cardCheckBox_15_clicked(bool checked);
+    void on_cardCheckBox_16_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;
@@ -71,9 +89,9 @@ private:
     uint indexOpenCard = 0;
     uint indexCard1 = 0;
     uint indexCard2 = 0;
-    std::array<QString, 16> appendStyleSheet;
     QCheckBox *checkbox = new QCheckBox("", this);
     QMessageBox msgBox;
     bool debug{false};
+    Card* card = new Card;
 };
 #endif // MAINWINDOW_H
