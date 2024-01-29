@@ -54,30 +54,30 @@ bool Card::is_matched_cards(uint card1, uint card2)
 void Card::card_handler(uint cardId, bool status)
 {
     qDebug("card_handler");
-    if(status == true)
+    if(status == true) // card is opened
     {
-        num_open_cards++;
-        if(pre_open_card != 0 && num_open_cards > 1)
+        num_opened_cards++;
+        if(pre_opened_card_id != 0 && num_opened_cards > 1)
         {
-            if(is_matched_cards(pre_open_card, cardId))
+            if(is_matched_cards(pre_opened_card_id, cardId))
             {
-                disable_cards(pre_open_card, cardId);
+                disable_cards(pre_opened_card_id, cardId);
             }
             else
             {
-                checkbox_map[pre_open_card] ->setChecked(false);
+                checkbox_map[pre_opened_card_id] ->setChecked(false);
                 checkbox_map[cardId] ->setChecked(false);
             }
-            pre_open_card = 0;
-            num_open_cards = 0;
+            pre_opened_card_id = 0;
+            num_opened_cards = 0;
             return;
         }
-        pre_open_card = cardId;
+        pre_opened_card_id = cardId;
     }
-    else
+    else // close a card
     {
-        num_open_cards--;
-        pre_open_card = 0;
+        num_opened_cards--;
+        pre_opened_card_id= 0;
     }
 }
 

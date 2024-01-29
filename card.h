@@ -26,8 +26,8 @@ public:
 private:
     Ui::MainWindow *ui;
     std::unordered_map<int, QCheckBox*> checkbox_map;
-    int num_open_cards = 0;
-    int pre_open_card = 0; //0 mean invalid
+    int num_opened_cards = 0;
+    int pre_opened_card_id = 0; //0 mean invalid
     std::array<QString, 16> appendStyleSheet;
 };
 

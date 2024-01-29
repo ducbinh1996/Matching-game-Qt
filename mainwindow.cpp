@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     card->initialize(ui);
 }
 
-MainWindow::~MainWindow()
+MainWindow::~MainWindow() // destructor of MainWindow
 {
     delete ui;
     delete card;
