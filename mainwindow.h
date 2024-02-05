@@ -38,21 +38,7 @@ private slots:
 
     void on_resumeBtn_clicked();
 
-//    void mapping_card_value();
-
-//    void change_card_availability(bool);
-
-//    bool is_matched_cards(uint card1, uint card2);
-
-//    void disable_cards(uint card1, uint card2);
-
-//    void uncheck_cards(uint card1, uint card2);
-
     uint find_bit_index(uint card);
-
-//    void add_random_images();
-
-//    void get_checkbox_ID(uint card);
 
     void reset_index();
 

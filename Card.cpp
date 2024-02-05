@@ -33,7 +33,7 @@ void Card::disable_cards(uint card1, uint card2)
     checkbox_map[card2]->setEnabled(false);
 };
 
-void Card::change_card_availability(bool state)
+void Card::change_all_cards_availability(bool state)
 {
     for(int index=1; index<17; index++)
     {
@@ -65,6 +65,7 @@ void Card::card_handler(uint cardId, bool status)
             }
             else
             {
+                QThread::msleep(500); // show both of the cards for 500ms before unchecked them all
                 checkbox_map[pre_opened_card_id] ->setChecked(false);
                 checkbox_map[cardId] ->setChecked(false);
             }
