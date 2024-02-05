@@ -27,7 +27,7 @@ MainWindow::~MainWindow() // destructor of MainWindow
 void MainWindow::on_goToGameBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);                                  // move to page_2 (index 1) in stackedWidget
-    card->change_card_availability(false);
+    card->change_all_cards_availability(false);
 }
 
 void MainWindow::on_startBtn_clicked()
@@ -37,7 +37,7 @@ void MainWindow::on_startBtn_clicked()
         ui->moveNumber->display((int)playerMove);
         card->add_random_images();
         gameStarted = true;
-        card->change_card_availability(true);
+        card->change_all_cards_availability(true);
         ui->startBtn->setVisible(false);
     }
 
@@ -108,7 +108,7 @@ void MainWindow::on_pushButton_clicked()
     debug = true; // to reproduce when we win the game
 }
 
-void MainWindow::on_cardCheckBox_1_clicked(bool checked)
+void MainWindow::on_cardCheckBox_1_clicked(bool checked) // Can we optimize these functions, 16 is a lot!!!
 {
     card->card_handler(1, checked);
 }
