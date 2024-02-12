@@ -54,6 +54,7 @@ bool Card::is_matched_cards(uint card1, uint card2)
 void Card::card_handler(uint cardId, bool status)
 {
     qDebug("card_handler");
+    move_count++;
     if(status == true) // card is opened
     {
         num_opened_cards++;
@@ -124,3 +125,8 @@ void Card::add_random_images()
        checkbox_map[i] ->setStyleSheet(defaultStyleSheet + appendStyleSheet[i-1]);
     }
 }
+
+int Card::get_move_count()
+{
+    return move_count;
+};
