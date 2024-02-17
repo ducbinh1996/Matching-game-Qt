@@ -62,6 +62,7 @@ void MainWindow::updateCountdown()
     QString timerText = playTime.toString("mm:ss");
     ui->timerDisplay->setText(timerText);
     ui->outputLabel->setText(QString::number(cardArr));
+    ui->moveNumber->display(card->get_move_count());
 }
 
 void MainWindow::on_pauseBtn_clicked()

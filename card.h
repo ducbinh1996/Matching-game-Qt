@@ -23,10 +23,12 @@ public:
     void card_compare(uint card1, uint card2);
     void card_handler(uint cardId, bool status);
     void add_random_images();
+    int get_move_count();
 private:
     Ui::MainWindow *ui;
     std::unordered_map<int, QCheckBox*> checkbox_map;
     int num_opened_cards = 0;
+    int move_count = 0;
     int pre_opened_card_id = 0; //0 mean invalid
     std::array<QString, 16> appendStyleSheet;
 };
